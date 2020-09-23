@@ -71,7 +71,7 @@
           // var j = document.createElement('script');
           // j.async = true;
           // j.src =
-          //   'https://www.googletagmanager.com/gtm.js?id={{ site.GTM_CONTAINER_ID }}';
+          //   'https://www.googletagmanager.com/gtm.js?id=[ YOUR_GTM_CONTAINER_ID ]';
           // f.parentNode.insertBefore(j, f);
           window.gtmInitialized = true;
         }
@@ -81,7 +81,8 @@
         // remove cookies
         cc.deleteCookie('_ga');
         cc.deleteCookie('_gid');
-        // cc.deleteCookie('_gat_{{ site.GOOGLE_TRACKING_ID }}');
+        // cc.deleteCookie('_gat_[ YOUR_GOOGLE_ANALYTICS_TRACKING_ID ]');
+
         // reload page to get rid of GTM
         location.reload();
       }
