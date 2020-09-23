@@ -24,7 +24,7 @@
         },
         type: 'opt-in',
         consentSettingsElementId: 'btn-revokeChoice',
-        layout: 'sanddev',
+        layout: 'categories',
         showCategories: {
           [CC.UNCATEGORIZED]: false,
           [CC.ESSENTIAL]: true,
@@ -61,23 +61,28 @@
       }
 
       function initializeGTM() {
-        // if (!isGTMInitialized()) {
-        //   window.dataLayer.push({
-        //     'gtm.start': new Date().getTime(),
-        //     event: 'gtm.js'
-        //   });
-        //   var f = document.getElementsByTagName('script')[0];
-        //   var j = document.createElement('script');
-        //   j.async = true;
-        //   j.src =
-        //     'https://www.googletagmanager.com/gtm.js?id={{ site.GTM_CONTAINER_ID }}';
-        //   f.parentNode.insertBefore(j, f);
-        window.gtmInitialized = true;
-        // }
+        if (!isGTMInitialized()) {
+          // window.dataLayer = window.dataLayer || [];
+          // window.dataLayer.push({
+          //   'gtm.start': new Date().getTime(),
+          //   event: 'gtm.js'
+          // });
+          // var f = document.getElementsByTagName('script')[0];
+          // var j = document.createElement('script');
+          // j.async = true;
+          // j.src =
+          //   'https://www.googletagmanager.com/gtm.js?id=[ YOUR_GTM_CONTAINER_ID ]';
+          // f.parentNode.insertBefore(j, f);
+          window.gtmInitialized = true;
+        }
       }
 
       function uninitializeGTM() {
+        // remove cookies
         cc.deleteCookie('_ga');
+        cc.deleteCookie('_gid');
+        // cc.deleteCookie('_gat_YOUR_GOOGLE_ANALYTICS_TRACKING_ID');
+
         // reload page to get rid of GTM
         location.reload();
       }

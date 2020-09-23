@@ -167,7 +167,7 @@ To keep this site secure, we use <a class="cc-link" href="https://www.cloudflare
     basic         : '{{messagelink}}{{compliance}}',
     'basic-close' : '{{messagelink}}{{compliance}}{{close}}',
     'basic-header': '{{header}}{{message}}{{link}}{{compliance}}',
-    sanddev: `<div class="cc-main-content">
+    categories: `<div class="cc-main-content">
         {{message}}
         <div class="content-footer">
           {{policiesLinks}}{{compliance}}
