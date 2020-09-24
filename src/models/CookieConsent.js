@@ -66,10 +66,10 @@ export default class CookieConsent extends Base {
     return this.popup.consents;
   }
 
-  deleteCookie(name) {
-    const { domain, path, secure } = this.popup.options.cookie;
+  deleteCookie(name, attributes) {
+    const defaultAttributes = this.popup.options.cookie;
 
-    removeCookie(name, domain, path, secure)
+    removeCookie(name, attributes, defaultAttributes)
   }
 }
 

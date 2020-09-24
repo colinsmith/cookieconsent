@@ -61,7 +61,7 @@ export default class Popup extends Base {
     this.hasTransition = Boolean(this.transitionEnd);
 
     // returns true if `onComplete` was called
-    if (this.canUseCookies()) {
+    if (this.canUseCookies() && this.hasAnswered()) {
       // user has already answered
       this.options.enabled = false
     }
@@ -116,6 +116,16 @@ export default class Popup extends Base {
 
       if (!this.usedCategory(categoryName)) {
         categoryElement.style.display = 'none';
+        return;
+      }
+
+      const categoryCheckbox = categoryElement.querySelector('label [type="checkbox"]');
+      
+      if (categoryCheckbox.name === CATEGORY_ESSENTIAL) {
+        categoryCheckbox.checked = true;
+        categoryCheckbox.disabled = true;
+      } else {
+        categoryCheckbox.checked = this.userCategories[categoryCheckbox.name] === STATUS_ALLOW;
       }
     })
     
@@ -275,7 +285,9 @@ export default class Popup extends Base {
    * @return { boolean } - true if any cookies have been set
    */
   hasAnswered() {
-    return this.getStatuses().some( status => !!status )
+    const { consents } = this;
+
+    return consents[CATEGORY_ESSENTIAL] === STATUS_ALLOW;
   }
 
   /**
@@ -468,8 +480,6 @@ export default class Popup extends Base {
       el.classList.add('cc-invisible')
     }
 
-    const { consents } = this;
-
     const openConsentsElement = document.getElementById(this.options.consentSettingsElementId);
     if (openConsentsElement) {
       openConsentsElement.addEventListener('click', () => this.openCustomizeSettings());
@@ -477,12 +487,7 @@ export default class Popup extends Base {
 
     el.addEventListener('click', event => this.handleButtonClick( event ) )
     el.querySelectorAll('.cc-category label [type="checkbox"]').forEach(checkbox => {
-      if (checkbox.name === CATEGORY_ESSENTIAL) {
-        checkbox.checked = true;
-        checkbox.disabled = true;
-      } else {
-        this.userCategories[checkbox.name] = consents[checkbox.name] ? STATUS_ALLOW : STATUS_DENY;
-        checkbox.checked = consents[checkbox.name] === STATUS_ALLOW;
+      if (checkbox.name !== CATEGORY_ESSENTIAL) {
         checkbox.addEventListener('change', () => {
           this.userCategories[checkbox.name] = checkbox.checked ? STATUS_ALLOW : STATUS_DENY
         })

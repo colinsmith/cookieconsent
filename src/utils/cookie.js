@@ -21,8 +21,10 @@ export const setCookie = function ( name, value, expiryDays, domain, path, secur
                     ( secure ? ';secure' : '' )
 }
 
-export const deleteCookie = (name, domain, path, secure) => {
+export const deleteCookie = (name, attributes, defaultAttributes) => {
   if (getCookie(name)) {
-    setCookie(name, '', 0, domain, path, secure);
+    const { domain, path, secure } = { ...defaultAttributes, ...attributes };
+
+    setCookie(name, '', -1, domain, path, secure);
   }
 }
