@@ -116,6 +116,7 @@ export default class Popup extends Base {
 
       if (!this.usedCategory(categoryName)) {
         categoryElement.style.display = 'none';
+
         return;
       }
 
