@@ -1,3 +1,95 @@
+[![MIT License][li]][ll]
+
+## Additional instructions for this fork from [Sandstream Development](https://github.com/sandstreamdev)
+
+This fork introduces additional categories dialog which is show after clicking 'Customize settings' button on initial cookies consent dialog. There are some more additional features to handle GDPR - see below.
+
+Check [GDPR example](./examples/example-gdpr.html) to see it in action.
+
+<p align="center"><img width="800" src="images/cc-dialog.png"></a></p>
+
+<p align="center"><img width="800" src="images/categories-dialog.png"></a></p>
+
+### Additional configuration options
+
+#### Categories
+
+For showing only specific categories following options needs to be set:
+
+```
+const cc = new CC({
+  //...options,
+  showCategories: {
+    [CC.UNCATEGORIZED]: false,
+    [CC.ESSENTIAL]: true,
+    [CC.PERSONALIZATION]: false,
+    [CC.ANALYTICS]: true,
+    [CC.MARKETING]: false
+  }
+})
+```
+
+Above example will show only essential and analytics categories.
+
+#### Policies links
+
+To set policies links mentioned in dialogs use following options:
+
+```
+const cc = new CC({
+  //...options,
+  content: {
+    privacyPolicyLink: '/privacy-policy',
+    cookiePolicyLink: '/cookie-policy'
+  }
+})
+```
+
+#### Consent settings
+
+As in GDPR you need to provide functionality to let the user change consents `consentSettingsElementId` was added. It is id of element on the page that will reopen categories dialog after clicking it.
+
+```
+const cc = new CC({
+  //...options,
+  consentSettingsElementId: 'btn-revokeChoice'
+});
+```
+
+#### Replace default `Read more` texts for categories
+
+All or some subset of categories' read more text can be changed.
+
+```
+const cc = new CC({
+  //...options,
+  content: {
+    categoryAnalytics: 'My new awesome text for analytics category',
+    categoryEssential: 'My new awesome text for essential category',
+    categoryMarketing: 'My new awesome text for marketing category',
+    categoryPersonalization: 'My new awesome text for personalization category',
+    categoryUncategorized: 'My new awesome text for uncategorized category'
+  }
+});
+```
+
+#### How to set the Google Tag Manager (GTM) cookie only if user accepted `Analytics` cookies?
+
+Check [GDPR example](./examples/example-gdpr.html) to see the solution.
+
+It handles also scenario when user revoke consent.
+
+#### Can be styled fully (or almost ;)) with css
+
+Styled version used in one of our projects:
+
+<p align="center"><img width="800" src="images/cc-dialog-styled.png"></a></p>
+
+<p align="center"><img width="800" src="images/categories-dialog-styled.png"></a></p>
+
+## And that's all from [Sandstream Development](https://github.com/sandstreamdev). Enjoy!
+
+---
 [![Build Status][bi]][bl]
 [![MIT License][li]][ll]
 [![Twitter][ti]][tl]
