@@ -10,7 +10,9 @@ module.exports = merge(common, {
     mode: 'production',
     output: {
       path: join( __dirname, 'build' ),
-      filename: 'cookieconsent.min.js'
+      filename: 'cookieconsent.min.js',
+      libraryExport: 'default',
+      libraryTarget: 'umd'
     },
     optimization: {
       moduleIds         : 'total-size',

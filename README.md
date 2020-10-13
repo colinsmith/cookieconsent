@@ -2,21 +2,29 @@
 
 ## Additional instructions for this fork from [Sandstream Development](https://github.com/sandstreamdev)
 
-This fork introduces additional categories dialog which is show after clicking 'Customize settings' button on initial cookies consent dialog. There are some more additional features to handle GDPR - see below.
+This fork introduces additional categories dialog which is shown after clicking the _Customize settings_ button on the initial cookie consent dialog. It also adds few additional features to handle some GDPR concerns - please see below.
 
 Check [GDPR example](./examples/example-gdpr.html) to see it in action.
 
-<p align="center"><img width="800" src="images/cc-dialog.png"></a></p>
+<p align="center"><img width="800" src="./images/cc-dialog.png" /></p>
 
-<p align="center"><img width="800" src="images/categories-dialog.png"></a></p>
+<p align="center"><img width="800" src="./images/categories-dialog.png" /></p>
+
+### Installation
+
+```bash
+npm install @sandstreamdev/cookieconsent
+# or via yarn
+yarn add @sandstreamdev/cookieconsent
+```
 
 ### Additional configuration options
 
 #### Categories
 
-For showing only specific categories following options needs to be set:
+For showing only specific categories, the following options need to be set:
 
-```
+```javascript
 const cc = new CC({
   //...options,
   showCategories: {
@@ -29,13 +37,13 @@ const cc = new CC({
 })
 ```
 
-Above example will show only essential and analytics categories.
+The example above will only show essential and analytics categories.
 
 #### Policies links
 
-To set policies links mentioned in dialogs use following options:
+To wire the policies links mentioned in dialogs, please use the following options:
 
-```
+```javascript
 const cc = new CC({
   //...options,
   content: {
@@ -47,20 +55,20 @@ const cc = new CC({
 
 #### Consent settings
 
-As in GDPR you need to provide functionality to let the user change consents `consentSettingsElementId` was added. It is id of element on the page that will reopen categories dialog after clicking it.
+As in GDPR, you need to provide the functionality to let the user change consents, so the `consentSettingsElementId` was added. It is the id of the element on the page that will reopen the categories dialog after clicking it.
 
-```
+```javascript
 const cc = new CC({
   //...options,
   consentSettingsElementId: 'btn-revokeChoice'
 });
 ```
 
-#### Replace default `Read more` texts for categories
+#### How to replace the default `Read more` texts for categories?
 
-All or some subset of categories' read more text can be changed.
+All or the desired subset of categories' read more text can be changed.
 
-```
+```javascript
 const cc = new CC({
   //...options,
   content: {
@@ -73,21 +81,21 @@ const cc = new CC({
 });
 ```
 
-#### How to set the Google Tag Manager (GTM) cookie only if user accepted `Analytics` cookies?
+#### How to set the Google Tag Manager (GTM) cookie only if the user has accepted analytics cookies?
 
 Check [GDPR example](./examples/example-gdpr.html) to see the solution.
 
-It handles also scenario when user revoke consent.
+It also handles scenario when user revoke their consent.
 
-#### Can be styled fully (or almost ;)) with css
+#### Styling with CSS
 
 Styled version used in one of our projects:
 
-<p align="center"><img width="800" src="images/cc-dialog-styled.png"></a></p>
+<p align="center"><img width="800" src="./images/cc-dialog-styled.png" /></p>
 
-<p align="center"><img width="800" src="images/categories-dialog-styled.png"></a></p>
+<p align="center"><img width="800" src="./images/categories-dialog-styled.png" /></p>
 
-## And that's all from [Sandstream Development](https://github.com/sandstreamdev). Enjoy!
+And that's all from [Sandstream Development](https://github.com/sandstreamdev). Enjoy!
 
 ---
 [![Build Status][bi]][bl]
