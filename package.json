@@ -1,7 +1,7 @@
 {
-  "name": "cookieconsent",
-  "version": "4.0.0",
-  "description": "Osano cookie consent tool.",
+  "name": "@sandstreamdev/cookieconsent",
+  "version": "0.0.1",
+  "description": "Cookie consent tool.",
   "main": "build/cookieconsent.min.js",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -36,7 +36,6 @@
     "webpack-cli": "^3.3.8",
     "webpack-merge": "^4.2.2"
   },
-  "homepage": "http://cookieconsent.osano.com/",
   "scripts": {
     "clean": "rimraf ./build/**/*",
     "build:dev": "npx webpack --config webpack.dev.js",
@@ -46,9 +45,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/osano/cookieconsent.git"
+    "url": "https://github.com/sandstreamdev/cookieconsent"
   },
-  "author": "Osano, Inc., a Public Benefit Corporation",
+  "author": {
+    "name": "Sandstream Development",
+    "url": "https://github.com/sandstreamdev/cookieconsent/graphs/contributors"
+  },
   "license": "MIT",
   "jest": {
     "moduleNameMapper": {
@@ -58,5 +60,8 @@
     "setupFiles": [
       "<rootDir>/src/__mocks__/client.js"
     ]
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

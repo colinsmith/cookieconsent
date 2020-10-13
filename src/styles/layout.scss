@@ -231,11 +231,11 @@
       display: none; /* hide the checkboxes */
     }
 
-    .cc-readmore + input + div {
+    .cc-readmore + input + .cc-more-info {
       display:none;
     }
 
-    .cc-readmore + input:checked + div {
+    .cc-readmore + input:checked + .cc-more-info {
       display:block;
     }
 

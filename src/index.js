@@ -5,7 +5,7 @@ import "./styles/main.scss"
 import CookieConsent from "./models/CookieConsent"
 
 if (typeof exports !== 'undefined') {
-  module.exports = CookieConsent
+  exports.CookieConsent = CookieConsent
 } else {
   window.CookieConsent = CookieConsent
 }
