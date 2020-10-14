@@ -91,7 +91,7 @@ describe( "Popup Class", () => {
         mergeOptions(
           mergeOptions( defaultOptions, options ),
           {
-            revokable: true
+            revokable: false
           }
         )
       )
