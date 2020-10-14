@@ -18,6 +18,20 @@ npm install @sandstreamdev/cookieconsent
 yarn add @sandstreamdev/cookieconsent
 ```
 
+### Usage
+
+#### Module
+```javascript
+import { CookieConsent } from '@sandstreamdev/cookieconsent';
+// or
+const { CookieConsent } = require('@sandstreamdev/cookieconsent');
+```
+
+#### Classic
+```javascript
+const CC = window.CookieConsent
+```
+
 ### Additional configuration options
 
 #### Categories

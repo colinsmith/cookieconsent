@@ -4,4 +4,8 @@ import "./styles/main.scss"
 
 import CookieConsent from "./models/CookieConsent"
 
-export default CookieConsent
+if (typeof exports !== 'undefined') {
+  exports.CookieConsent = CookieConsent
+} else {
+  window.CookieConsent = CookieConsent
+}
