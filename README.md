@@ -29,7 +29,7 @@ const { CookieConsent } = require('@sandstreamdev/cookieconsent');
 
 #### Classic
 ```javascript
-const CC = window.CookieConsent
+const CC = window.CookieConsent;
 ```
 
 ### Additional configuration options
