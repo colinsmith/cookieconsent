@@ -1,7 +1,7 @@
 "use strict"
 
 const CookieConsent = require( "./models/CookieConsent" ).default
-const CC = require( "./" )
+const { CookieConsent: CC } = require( "./" )
 
 describe( "Plugin", () => {
   test( "instantiates without errors", () => {
