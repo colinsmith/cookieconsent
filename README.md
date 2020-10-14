@@ -1,3 +1,117 @@
+[![MIT License][li]][ll]
+
+## Additional instructions for this fork from [Sandstream Development](https://github.com/sandstreamdev)
+
+This fork introduces additional categories dialog which is shown after clicking the _Customize settings_ button on the initial cookie consent dialog. It also adds few additional features to handle some GDPR concerns - please see below.
+
+Check [GDPR example](./examples/example-gdpr.html) to see it in action.
+
+<p align="center"><img width="800" src="./images/cc-dialog.png" /></p>
+
+<p align="center"><img width="800" src="./images/categories-dialog.png" /></p>
+
+### Installation
+
+```bash
+npm install @sandstreamdev/cookieconsent
+# or via yarn
+yarn add @sandstreamdev/cookieconsent
+```
+
+### Usage
+
+#### Module
+```javascript
+import { CookieConsent } from '@sandstreamdev/cookieconsent';
+// or
+const { CookieConsent } = require('@sandstreamdev/cookieconsent');
+```
+
+#### Classic
+```javascript
+const CC = window.CookieConsent;
+```
+
+### Additional configuration options
+
+#### Categories
+
+For showing only specific categories, the following options need to be set:
+
+```javascript
+const cc = new CC({
+  //...options,
+  showCategories: {
+    [CC.UNCATEGORIZED]: false,
+    [CC.ESSENTIAL]: true,
+    [CC.PERSONALIZATION]: false,
+    [CC.ANALYTICS]: true,
+    [CC.MARKETING]: false
+  }
+})
+```
+
+The example above will only show essential and analytics categories.
+
+#### Policies links
+
+To wire the policies links mentioned in dialogs, please use the following options:
+
+```javascript
+const cc = new CC({
+  //...options,
+  content: {
+    privacyPolicyLink: '/privacy-policy',
+    cookiePolicyLink: '/cookie-policy'
+  }
+})
+```
+
+#### Consent settings
+
+As in GDPR, you need to provide the functionality to let the user change consents, so the `consentSettingsElementId` was added. It is the id of the element on the page that will reopen the categories dialog after clicking it.
+
+```javascript
+const cc = new CC({
+  //...options,
+  consentSettingsElementId: 'btn-revokeChoice'
+});
+```
+
+#### How to replace the default `Read more` texts for categories?
+
+All or the desired subset of categories' read more text can be changed.
+
+```javascript
+const cc = new CC({
+  //...options,
+  content: {
+    categoryAnalytics: 'My new awesome text for analytics category',
+    categoryEssential: 'My new awesome text for essential category',
+    categoryMarketing: 'My new awesome text for marketing category',
+    categoryPersonalization: 'My new awesome text for personalization category',
+    categoryUncategorized: 'My new awesome text for uncategorized category'
+  }
+});
+```
+
+#### How to set the Google Tag Manager (GTM) cookie only if the user has accepted analytics cookies?
+
+Check [GDPR example](./examples/example-gdpr.html) to see the solution.
+
+It also handles scenario when user revoke their consent.
+
+#### Styling with CSS
+
+Styled version used in one of our projects:
+
+<p align="center"><img width="800" src="./images/cc-dialog-styled.png" /></p>
+
+<p align="center"><img width="800" src="./images/categories-dialog-styled.png" /></p>
+
+And that's all from [Sandstream Development](https://github.com/sandstreamdev). Enjoy!
+
+---
 [![Build Status][bi]][bl]
 [![MIT License][li]][ll]
 [![Twitter][ti]][tl]
