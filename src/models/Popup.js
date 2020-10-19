@@ -135,7 +135,7 @@ export default class Popup extends Base {
   }
 
   openCustomizeSettings() {
-    this.open();
+    this.open('customizeSettingsOpened');
     this.showCustomizeSettingsContent();
   }
 
@@ -149,7 +149,7 @@ export default class Popup extends Base {
     }
   }
 
-  open() {
+  open(callbackName = 'popupOpened') {
     if (!this.element) return
 
     if (!this.isOpen()) {
@@ -165,7 +165,7 @@ export default class Popup extends Base {
 
       this.syncCategoriesFromCookies();
 
-      this.emit( "popupOpened" )
+      this.emit(callbackName)
     }
 
     return this
