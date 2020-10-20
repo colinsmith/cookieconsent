@@ -50,6 +50,9 @@ export default class CookieConsent extends Base {
   open(){
     return ( this.popup.open(), this )
   }
+  openCustomizeSettings() {
+    return (this.popup.openCustomizeSettings(), this);
+  }
   toggleRevokeButton( bool ) {
     return ( this.popup.toggleRevokeButton( bool ), this )
   }

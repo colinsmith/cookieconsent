@@ -1,6 +1,6 @@
 {
   "name": "@sandstreamdev/cookieconsent",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Osano cookie consent tool.",
   "main": "build/cookieconsent.min.js",
   "devDependencies": {
