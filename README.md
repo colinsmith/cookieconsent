@@ -23,8 +23,10 @@ yarn add @sandstreamdev/cookieconsent
 #### Module
 ```javascript
 import { CookieConsent } from '@sandstreamdev/cookieconsent';
+import '@sandstreamdev/cookieconsent/build/cookieconsent.min.css';
 // or
 const { CookieConsent } = require('@sandstreamdev/cookieconsent');
+require('@sandstreamdev/cookieconsent/build/cookieconsent.min.css');
 ```
 
 #### Classic
