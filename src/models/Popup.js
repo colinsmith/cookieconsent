@@ -323,14 +323,14 @@ export default class Popup extends Base {
    * @return { undefined }
   */
   setStatuses() {
-    const { name, expiryDays, domain, path, secure } = this.options.cookie
+    const { name, expiryDays, domain, path, secure, sameSite } = this.options.cookie
 
     const updateCategoryStatus = ( categoryName, status ) => {
       if (isValidStatus(status)) {
         if (this.usedCategory(categoryName)) {
           const cookieName = name + '_' + categoryName
           const chosenBefore = STATUSES.includes(getCookie(cookieName));
-          setCookie(cookieName, status, expiryDays, domain, path, secure)
+          setCookie(cookieName, status, expiryDays, domain, path, secure, sameSite)
           this.emit("statusChanged", cookieName, status, chosenBefore)
         }
       } else {
@@ -368,9 +368,9 @@ export default class Popup extends Base {
    * Clear all cookie categoies statuses
    */
   clearStatuses() {
-    const { name, domain, path } = this.options.cookie
+    const { name, domain, path, secure, sameSite } = this.options.cookie
     CATEGORIES.forEach( categoryName => {
-      setCookie(name+'_'+categoryName, '', -1, domain, path)
+      setCookie(name+'_'+categoryName, '', -1, domain, path, secure, sameSite)
     })
   }
   
