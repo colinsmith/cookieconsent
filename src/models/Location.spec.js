@@ -43,4 +43,27 @@ describe( "Location Class", () => {
     test("instantiates", () => isLocation( location ) )
     describe( "has the correct options", () => hasCorrectOptions( location, mergeOptions( defaultOptions, options ) ) )
   })
+  describe( "with custom options and matching service", () => {
+    const options = {
+      timeout: 3000,
+      services: [ 'ipinfo2' ],
+      serviceDefinitions: {
+        ipinfo2: function(options) {
+          return {
+            testCallback: function () {
+              return true;
+            }
+          }
+        }
+      },
+    };
+    const location = new Location( options )
+    test("instantiates", () => isLocation( location ) )
+    describe( "has the correct options and matching service", () => {
+      hasCorrectOptions( location, { ...defaultOptions, ...(options || {}) } )
+      test('custom service exists', () => {
+        expect( location.getNextService() ).toHaveProperty(['testCallback'])
+      });
+    })
+  })
 })
