@@ -41,7 +41,7 @@
     "clean": "rimraf ./build/**/*",
     "build:dev": "npx webpack --config webpack.dev.js",
     "build": "npm run clean && npx webpack -p --optimize-minimize --config webpack.prod.js",
-    "build:release": "npm run build && bump -c -t package.json package-lock.json bower.json",
+    "build:release": "npm run build && bump -c -t package.json package-lock.json",
     "prepare": "npm run build",
     "test": "jest ./src --verbose --coverage && rm -rf coverage/"
   },
