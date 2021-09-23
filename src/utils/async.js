@@ -8,7 +8,7 @@ export const getScript = ( url, callback, timeout ) => {
   scriptTag.src = url.src || url
   scriptTag.async = false
 
-  scriptTag.onreadystatechange = s.onload = function() {
+  scriptTag.onreadystatechange = scriptTag.onload = function() {
     // this code handles two scenarios, whether called by onload or onreadystatechange
     const state = scriptTag.readyState
 
