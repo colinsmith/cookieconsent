@@ -37,6 +37,8 @@ export const makeAsyncRequest = ( url, onComplete, timeout, postData, requestHea
     'MSXML2.XMLHTTP.3.0'
   )
 
+  xhr.withCredentials = true;
+
   xhr.open(postData ? 'POST' : 'GET', url, 1)
 
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
